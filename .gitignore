@@ -145,6 +145,7 @@ GitHub.sublime-settings
 *.log
 /node_modules/
 */node_modules/*
+node_modules
 
 
 # CircleCI temporary file for cache key computation.
