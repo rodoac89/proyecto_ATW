@@ -10,6 +10,11 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
   {
+    displayName: 'Saludo',
+    iconName: 'message',
+    route: '/greeting',
+  },
+  {
     navCap: 'Ui Components',
   },
   {
@@ -36,11 +41,6 @@ export const navItems: NavItem[] = [
     displayName: 'Tooltips',
     iconName: 'tooltip',
     route: '/ui-components/tooltips',
-  },
-  {
-    displayName: 'Forms',
-    iconName: 'tooltip',
-    route: '/ui-components/forms',
   },
   {
     navCap: 'Auth',

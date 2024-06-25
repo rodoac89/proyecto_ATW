@@ -24,16 +24,11 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
    # url="https://"+HOSTNAME+"/api"
 )
-
-schema_view = get_swagger_view(title="Api de Proyecto")
-
 urlpatterns = [
     # auth
     path('', include('rest_framework.urls'), name='rest_framework'),
     # Apiviews
     path('core/', include('api.core.urls')),
     # swagger docs
-    path('docs/', schema_view)
+    path('docs/', schema_view.as_view())
 ]
-
-router = routers.DefaultRouter()
