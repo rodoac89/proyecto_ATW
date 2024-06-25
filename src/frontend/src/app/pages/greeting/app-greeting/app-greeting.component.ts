@@ -10,8 +10,11 @@ export class AppGreetingComponent {
   nombre: string;
 
   constructor() {
+    console.log("llegue");
     this.nombre = "";
   }
+
+  
 
   async getSaludo(){
     const result = await fetch('http://localhost:8000/api/core/saludo/');
