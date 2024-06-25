@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&x&f5_xpb^d)#0pu0tws4ixm(!17h-ga9!99*)j_cfkccb&f&-'
+SECRET_KEY = f'django-insecure-{get_random_secret_key()}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,11 +45,11 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_framework_swagger',
     'rest_framework',
-
-    
+    'corsheaders',    
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,7 +61,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
-CORS_ORIGIN_WHITELIST = []
+CORS_ORIGIN_WHITELIST = ['http://localhost:4200', 'http://localhost']
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -69,7 +70,9 @@ CORS_ALLOW_METHODS = [
     'POST',
     'PUT',
     'DELETE',
+    'OPTIONS'
 ]
+
 
 CORS_ALLOW_HEADERS = [
     'accept',

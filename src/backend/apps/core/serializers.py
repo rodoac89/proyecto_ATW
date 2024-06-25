@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from apps.core.models import Saludo
+from apps.core.models import Persona
 
 
-class SaludoSerializer(serializers.Serializer):
+class PersonaSerializer(serializers.Serializer):
     nombre = serializers.CharField() 
     class Meta:
-        model = Saludo 
+        model = Persona 

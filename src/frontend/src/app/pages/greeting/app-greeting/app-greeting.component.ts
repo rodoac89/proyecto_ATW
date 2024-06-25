@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-app-greeting',
@@ -8,19 +8,21 @@ import { Component } from '@angular/core';
 export class AppGreetingComponent {
 
   nombre: string;
+  @Input() name_id: string;
 
   constructor() {
-    console.log("llegue");
     this.nombre = "";
+    this.name_id = "";
   }
 
   
 
   async getSaludo(){
-    const result = await fetch('http://localhost:8000/api/core/saludo/');
+    const result = await fetch(
+      'http://localhost:8000/api/core/saludo/?id='+this.name_id);
+
     const c = await result.json();
     this.nombre = await c.nombre;
-    console.log(this.nombre)
   }
 
 }
