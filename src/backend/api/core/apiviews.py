@@ -17,6 +17,6 @@ class Persona(APIView):
     
 class ListPersona(APIView):
     def get(self,request):
-        response = utils.traer_personas()
+        response = utils.traer_personas(request)
         status_code = status.HTTP_404_NOT_FOUND if not response else status.HTTP_200_OK
         return Response(response, status_code)

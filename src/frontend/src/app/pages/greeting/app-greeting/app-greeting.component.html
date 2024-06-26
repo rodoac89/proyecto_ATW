@@ -11,8 +11,8 @@
             required
           >
             <mat-option>--</mat-option>
-            <mat-option *ngFor="let person of people" [value]="person.id">
-              {{ person.nombre }}
+            <mat-option *ngFor="let p of people" [value]="p.id">
+              {{ p.nombre }}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="peopleFormGroup.controls.personControl.hasError('required')"
@@ -27,7 +27,7 @@
   </mat-card>
 </div>
 
-<div class="col-12">
+<div class="col-12" [hidden]="!showData">
   <mat-card class="cardWithShadow">
     <mat-card-content class="p-24">
       <div class="row">
@@ -35,7 +35,16 @@
           <h1>Datos</h1></div>
         <div class="col-12">
           <ul>
-            <li>Hola, {{ nombre }}</li>
+            <li><h2>Hola, {{ person.nombre }}</h2></li>
+            <li>
+              <h2>Sus datos son:</h2>
+              <ul>
+                <li><h3>Imagen de perfil:</h3><img src="{{ avatarLink }}" alt="avatar"></li>
+                <li><h3>Fecha de nacimiento: {{ person.f_nacimiento }}</h3></li>
+                <li><h3>Ciudad: {{ person.ciudad }}</h3></li>
+              </ul>
+            </li>
+            
           </ul>
         </div>
       </div>

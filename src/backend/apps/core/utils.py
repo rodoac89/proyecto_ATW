@@ -15,13 +15,17 @@ def get_name(i=None):
     else:
         raise Http404
 
-def traer_personas():
+def traer_personas(request):
     p = Persona.objects.all()
-    return PersonaSerializer(p, many=True).data
+    return PersonaSerializer(p, context={"request": request}, many=True).data
 
-def save_name(nombre = None):
-    if nombre is not None and type(nombre) == str:
-        Persona.objects.create(name = nombre)
+def guardar_persona(*args, **kwargs):
+    if 'nombre' in kwargs and kwargs.get('nombre') != "" and type(kwargs.get('nombre')) == str:
+        p = Persona.objects.create(name = kwargs.get('nombre'))
+        p.f_nacimiento = kwargs.get('f_nacimiento') if 'f_nacimiento' in kwargs else None
+        p.ciudad = kwargs.get('ciudad') if 'ciudad' in kwargs else None
+        p.avatar = kwargs.get('avatar') if 'avatar' in kwargs else None
+        p.save()
         return True
     else:
         return False

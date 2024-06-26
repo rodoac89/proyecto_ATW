@@ -14,6 +14,8 @@ from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 import os
 
+DATE_INPUT_FORMATS = ['%d-%m-%Y'] # Configura el formato de fecha predeterminado
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -199,3 +201,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored'
+MEDIA_ROOT = BASE_DIR / 'media'

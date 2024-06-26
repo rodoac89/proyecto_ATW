@@ -8,9 +8,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AppGreetingComponent {
 
-  nombre: string;
+  person: any;
+  avatarLink: string;
   name_id: string;
   people: any[];
+  showData: boolean;
   peopleFormGroup = new FormGroup({
     personControl: new FormControl('', [Validators.required]),
 
@@ -18,10 +20,12 @@ export class AppGreetingComponent {
 
 
   constructor() {
-    this.nombre = "";
+    this.person = {};
     this.name_id = "";
     this.people = [];
     this.getPeople();
+    this.showData = false;
+    this.avatarLink = "";
     
   }
 
@@ -39,8 +43,14 @@ export class AppGreetingComponent {
     const result = await fetch(
       'http://localhost:8000/api/core/get/Persona/'+person_id+'/');
 
-      const c = await result.json();
-      this.nombre = await c.nombre;
+    const c = await result.json();
+    this.person = await c;
+    if (Object.keys(this.person).length) {
+      this.showData = true;
+      this.avatarLink = this.person.avatar;
+    }
+
+
 
   }
 
