@@ -1,8 +1,44 @@
-<div>
-  <p>Saludo xd</p>
-  <p>id nombre: {{ name_id }}</p>
-  <button (click)="getSaludo()">Obtener paises</button>
-  <ul>
-    <li>Hola, {{ nombre }}</li>
-  </ul>
+<div class="col-lg-12 col-sm-6">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <mat-card-title>Seleccione persona</mat-card-title>
+      <form class="row m-t-24" [formGroup]="peopleFormGroup" (submit)="getPerson()">
+        
+        <mat-form-field>
+          <mat-select
+            placeholder="Seleccione persona"
+            [formControl]="peopleFormGroup.controls.personControl"
+            required
+          >
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let person of people" [value]="person.id">
+              {{ person.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="peopleFormGroup.controls.personControl.hasError('required')"
+            >Por favor, seleccione una persona</mat-error
+          >
+        </mat-form-field>
+        <div class="col-12">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!peopleFormGroup.valid">Enviar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="col-12">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class="row">
+        <div class="col-12">
+          <h1>Datos</h1></div>
+        <div class="col-12">
+          <ul>
+            <li>Hola, {{ nombre }}</li>
+          </ul>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

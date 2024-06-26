@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-app-greeting',
@@ -8,21 +9,39 @@ import { Component, Input } from '@angular/core';
 export class AppGreetingComponent {
 
   nombre: string;
-  @Input() name_id: string;
+  name_id: string;
+  people: any[];
+  peopleFormGroup = new FormGroup({
+    personControl: new FormControl('', [Validators.required]),
+
+  });
+
 
   constructor() {
     this.nombre = "";
     this.name_id = "";
+    this.people = [];
+    this.getPeople();
+    
   }
 
-  
+  async getPeople(){
+    const result = await fetch('http://localhost:8000/api/core/get/Personas/');
 
-  async getSaludo(){
+    const response = (await result.json()) as any[];
+    this.people = response;
+    console.log(this.people);
+  }
+
+  async getPerson(){
+    let person_id;
+    console.log(person_id=this.peopleFormGroup.controls.personControl.value)
     const result = await fetch(
-      'http://localhost:8000/api/core/saludo/?id='+this.name_id);
+      'http://localhost:8000/api/core/get/Persona/'+person_id+'/');
 
-    const c = await result.json();
-    this.nombre = await c.nombre;
+      const c = await result.json();
+      this.nombre = await c.nombre;
+
   }
 
 }

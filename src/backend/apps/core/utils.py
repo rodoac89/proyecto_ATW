@@ -15,9 +15,9 @@ def get_name(i=None):
     else:
         raise Http404
 
-def get_names():
+def traer_personas():
     p = Persona.objects.all()
-    return PersonaSerializer(p).data
+    return PersonaSerializer(p, many=True).data
 
 def save_name(nombre = None):
     if nombre is not None and type(nombre) == str:
