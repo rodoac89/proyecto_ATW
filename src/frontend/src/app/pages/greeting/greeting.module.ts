@@ -10,6 +10,8 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 
 import { GreetingRoutes } from './greeting.routing';
 import { AppGreetingComponent } from './app-greeting/app-greeting.component';
+import { AppPersonasComponent } from './app-personas/app-personas.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   imports: [
@@ -19,9 +21,11 @@ import { AppGreetingComponent } from './app-greeting/app-greeting.component';
     FormsModule,
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
+    SweetAlert2Module,
   ],
   declarations: [
-    AppGreetingComponent
+    AppGreetingComponent,
+    AppPersonasComponent
   ],
 })
 export class GreetingModule {}

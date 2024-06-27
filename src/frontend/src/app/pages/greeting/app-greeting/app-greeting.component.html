@@ -19,6 +19,7 @@
             >Por favor, seleccione una persona</mat-error
           >
         </mat-form-field>
+        <a mat-raised-button color="primary" [routerLink]="['people']">Administrar personas</a>
         <div class="col-12">
           <button mat-raised-button color="primary" type="submit" [disabled]="!peopleFormGroup.valid">Enviar</button>
         </div>
@@ -39,7 +40,7 @@
             <li>
               <h2>Sus datos son:</h2>
               <ul>
-                <li><h3>Imagen de perfil:</h3><img src="{{ avatarLink }}" alt="avatar"></li>
+                <li><h3>Imagen de perfil:</h3><img [src]="avatarLink" alt="avatar"></li>
                 <li><h3>Fecha de nacimiento: {{ person.f_nacimiento }}</h3></li>
                 <li><h3>Ciudad: {{ person.ciudad }}</h3></li>
               </ul>
