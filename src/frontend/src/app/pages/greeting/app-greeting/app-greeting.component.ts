@@ -30,7 +30,7 @@ export class AppGreetingComponent {
   }
 
   async getPeople(){
-    const result = await fetch('http://localhost:8000/api/core/get/Personas/');
+    const result = await fetch('http://localhost:8000/api/core/get/list/Persona/');
 
     const response = (await result.json()) as any[];
     this.people = response;
@@ -41,7 +41,7 @@ export class AppGreetingComponent {
     let person_id;
     console.log(person_id=this.peopleFormGroup.controls.personControl.value)
     const result = await fetch(
-      'http://localhost:8000/api/core/get/Persona/'+person_id+'/');
+      `http://localhost:8000/api/core/get/Persona/${person_id}/`);
 
     const c = await result.json();
     this.person = await c;

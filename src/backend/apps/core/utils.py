@@ -29,3 +29,15 @@ def guardar_persona(*args, **kwargs):
         return True
     else:
         return False
+    
+def borrar_persona(i=None):
+    if i is not None:
+        try:
+            i = int(i)
+            Persona.objects.get(id=i).delete()
+            return True
+        except Exception as e:
+            print(e)
+            raise Http404
+    else:
+        raise Http404
