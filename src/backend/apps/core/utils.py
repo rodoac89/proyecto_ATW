@@ -19,7 +19,7 @@ def traer_personas(request):
     p = Persona.objects.all()
     return PersonaSerializer(p, context={"request": request}, many=True).data
 
-def guardar_persona(*args, **kwargs):
+def guardar_persona(**kwargs):
     if 'nombre' in kwargs and kwargs.get('nombre') != "" and type(kwargs.get('nombre')) == str:
         p = Persona.objects.create(name = kwargs.get('nombre'))
         p.f_nacimiento = kwargs.get('f_nacimiento') if 'f_nacimiento' in kwargs else None
