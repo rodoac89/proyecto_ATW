@@ -32,7 +32,7 @@ export class AppPersonasComponent {
   }
 
   async addPerson() {
-    type LoginFormResult = {
+    type AddPersonForm = {
       nombre: string;
       ciudad: string;
       f_nacimiento: Date;
@@ -42,7 +42,7 @@ export class AppPersonasComponent {
     let ciudadInput: HTMLInputElement;
     let f_nacimientoInput: HTMLInputElement;
 
-    Swal.fire<LoginFormResult>({
+    Swal.fire<AddPersonForm>({
       title: "Agregar persona",
       html: `
     <input type="text" id="nombre" class="swal2-input" placeholder="Nombre completo">
