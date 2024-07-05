@@ -33,7 +33,9 @@
       <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
         <mat-cell *matCellDef="let element"> 
-            <button color="warn" mat-raised-button>Editar</button>
+            <button color="warn" mat-raised-button
+            (click)="updatePerson(element)"
+            >Editar</button>
             
             <button color="accent" 
                 mat-raised-button 
